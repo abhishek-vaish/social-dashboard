@@ -1,0 +1,323 @@
+@import "variables";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.toggle_btn {
+  width: toRem(48);
+  height: toRem(24);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: toRem(50);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: toRem(6);
+
+  .toggle_circle {
+    width: toRem(16);
+    height: toRem(16);
+    border-radius: toRem(50);
+  }
+}
+
+.line {
+  height: toRem(4);
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.light-theme {
+  body {
+    background-color: map-get($map: $light-theme, $key: "background");
+  }
+  h3 {
+    color: map-get($map: $light-theme, $key: "text-dark");
+  }
+  p {
+    color: map-get($map: $light-theme, $key: "text-gray");
+    font-size: toRem(14);
+  }
+
+  .hero__background__design {
+    background-color: map-get($map: $light-theme, $key: "top-background");
+  }
+
+  .toggle_btn {
+    background-color: $light-toggle;
+
+    .toggle_circle {
+      background-color: white;
+      transition: margin-left 0.1s linear;
+    }
+  }
+
+  .card__layout {
+    background-color: map-get($map: $light-theme, $key: "card-background");
+  }
+
+  .overview {
+    h3 {
+      color: map-get($map: $light-theme, $key: "text-gray");
+    }
+  }
+}
+
+.dark-theme {
+  background-color: map-get($map: $dark-theme, $key: "background");
+  h3 {
+    color: map-get($map: $dark-theme, $key: "text-white");
+  }
+  h2 {
+    color: map-get($map: $dark-theme, $key: "text-white");
+  }
+  p {
+    color: map-get($map: $dark-theme, $key: "text-blue");
+  }
+
+  .hero__background__design {
+    background-color: map-get($map: $dark-theme, $key: "top-background");
+  }
+
+  .toggle_btn {
+    @include dark-toggle;
+
+    .toggle_circle {
+      background-color: map-get($map: $dark-theme, $key: "background");
+      margin-left: toRem(21);
+      transition: margin-left 0.1s linear;
+    }
+  }
+
+  .card__layout {
+    background-color: map-get($map: $dark-theme, $key: "card-background");
+
+    .content {
+      h1 {
+        color: white;
+      }
+    }
+  }
+}
+
+.hero {
+  height: 110vh;
+  @include mobile-breakpoints {
+    height: 332vh;
+  }
+  &__background__design {
+    height: toRem(240);
+    border-bottom-left-radius: toRem(20);
+    border-bottom-right-radius: toRem(20);
+  }
+
+  .header {
+    padding-top: toRem(36);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mobile-breakpoints {
+      flex-direction: column;
+      justify-content: none;
+    }
+
+    &__content {
+      h3 {
+        font-size: toRem(24);
+
+        @include mobile-breakpoints {
+          font-size: toRem(20);
+        }
+      }
+      p {
+        font-size: toRem(14);
+        font-weight: 400;
+        margin-top: toRem(14);
+
+        @include mobile-breakpoints {
+          margin-top: toRem(6);
+        }
+      }
+    }
+
+    .temp-line {
+      width: 100%;
+      height: toRem(2);
+      background-color: map-get($map: $light-theme, $key: "text-gray");
+      display: none;
+      margin-top: toRem(24);
+      margin-bottom: toRem(16);
+
+      @include mobile-breakpoints {
+        display: block;
+      }
+    }
+
+    &__toggle {
+      @include mobile-breakpoints {
+        width: 100%;
+      }
+      &__section {
+        display: flex;
+        align-items: center;
+
+        @include mobile-breakpoints {
+          justify-content: space-between;
+        }
+
+        p {
+          font-size: toRem(14);
+          margin-right: toRem(14);
+        }
+      }
+    }
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: toRem(46);
+
+  &__1 {
+    .line {
+      background-color: $facebook;
+    }
+  }
+
+  &__2 {
+    .line {
+      background-color: $twitter;
+    }
+  }
+
+  &__3 {
+    .line {
+      @include instagram;
+    }
+  }
+
+  &__4 {
+    .line {
+      background-color: $youTube;
+    }
+
+    .content__bottom {
+      color: $youTube;
+    }
+  }
+}
+
+.card__layout {
+  width: toRem(248);
+  height: toRem(216);
+  border-radius: toRem(5);
+  margin-bottom: toRem(24);
+
+  .content {
+    width: toRem(122);
+    margin: 0 auto;
+    margin-top: toRem(26);
+    text-align: center;
+    &__header {
+      margin-bottom: toRem(24);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        font-size: toRem(12);
+        margin-left: toRem(10);
+        font-weight: 800;
+      }
+    }
+    h1 {
+      font-size: toRem(46);
+    }
+
+    .follower {
+      text-transform: uppercase;
+      letter-spacing: toRem(4);
+      font-size: 12px;
+    }
+    &__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: toRem(30);
+
+      p {
+        font-size: 12px;
+        font-weight: 800;
+        margin-left: toRem(2);
+        color: map-get($map: $primary, $key: "lime-green");
+      }
+    }
+  }
+}
+
+.overview {
+  margin-top: toRem(52);
+
+  &__card {
+    margin-top: toRem(26);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .card__layout {
+      width: toRem(252);
+      height: toRem(124);
+      border-radius: toRem(5);
+      margin-bottom: toRem(26);
+
+      &__content {
+        width: toRem(200);
+        margin: 0 auto;
+        padding-top: toRem(26);
+
+        .card__header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: toRem(28);
+
+          p {
+            font-size: toRem(12);
+            font-weight: 800;
+          }
+        }
+
+        .card__bottom {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .stats {
+            display: flex;
+            align-items: center;
+
+            p {
+              font-size: toRem(12);
+              font-weight: 800;
+              color: map-get($map: $primary, $key: "lime-green");
+              margin-left: toRem(2);
+            }
+          }
+        }
+      }
+    }
+  }
+}

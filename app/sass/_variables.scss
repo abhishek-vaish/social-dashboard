@@ -1,0 +1,54 @@
+@use "sass:math";
+
+$facebook: hsl(208, 92%, 53%);
+$twitter: hsl(203, 89%, 53%);
+$youTube: hsl(348, 97%, 39%);
+$light-toggle: hsl(230, 22%, 74%);
+
+$primary: (
+  "lime-green": hsl(163, 72%, 41%),
+  "bright-red": hsl(356, 69%, 56%),
+);
+
+$dark-theme: (
+  "background": hsl(230, 17%, 14%),
+  "top-background": hsl(232, 19%, 15%),
+  "card-background": hsl(228, 28%, 20%),
+  "text-blue": hsl(228, 77%, 72%),
+  "text-white": hsl(0, 0%, 100%),
+);
+
+$light-theme: (
+  "background": hsl(0, 0%, 100%),
+  "top-background": hsl(225, 100%, 98%),
+  "card-background": hsl(227, 47%, 96%),
+  "text-gray": hsl(228, 12%, 44%),
+  "text-dark": hsl(230, 17%, 14%),
+);
+
+@mixin instagram {
+  background-image: linear-gradient(
+    90deg,
+    hsl(37, 97%, 70%),
+    hsl(329, 70%, 58%)
+  );
+}
+
+@mixin dark-toggle {
+  background-image: linear-gradient(
+    90deg,
+    hsl(210, 78%, 56%),
+    hsl(146, 68%, 55%)
+  );
+}
+
+@mixin mobile-breakpoints {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}
+
+@function toRem($value) {
+  $remValue: math.div($value, 16) + rem;
+  @return $remValue;
+}
