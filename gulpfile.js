@@ -31,3 +31,4 @@ const taskWatch = () => {
   );
 };
 exports.default = gulp.series(sassTask, browserSync, taskWatch);
+exports.build = gulp.series(sassTask);
